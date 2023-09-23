@@ -30,7 +30,7 @@ Distributed under the MIT License. See LICENSE.txt for more information.
 ## Contact 
 ### Email
 128046995+CJ1608@users.noreply.github.com 
-###Repo link
+### Repo link
 https://github.com/CJ1608/computer-vision-rock-paper-scissors.git 
 
 ## Acknowledgements
