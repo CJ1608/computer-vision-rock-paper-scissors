@@ -38,12 +38,12 @@ class RPS:
         self.computer_wins = 0
         #if neither user or computer won 3 times
         while(self.user_wins < 3) and (self.computer_wins < 3):
-            print(f'Computer: {game.computer_wins}....... User: {game.user_wins}')
+            print(f'\nComputer: {game.computer_wins}\tUser: {game.user_wins}')
             self.__countdown()
             user_choice = self.__get_prediction()
             self.__get_winner(computer_choice=self.__get_computer_choice(), user_choice = user_choice)
         # if either of user or computer has won 3 times
-        print(f'End of game. Computer won: {game.computer_wins}. You won: {game.user_wins}.')
+        print(f'\tEnd of game! \nComputer: {game.computer_wins} \tUser: {game.user_wins}')
         # After the loop release the cap object
         game.cap.release()
         # Destroy all the windows
@@ -129,18 +129,18 @@ class RPS:
         """
         #user selects nothing
         if user_choice == 'nothing':
-            print(f'You chose {user_choice}. Please try again.')
+            print(f'\nYou chose {user_choice}. Please try again.\n')
         #tie
         elif computer_choice == user_choice:
-            print(f'You chose "{user_choice}" and your opponent chose "{computer_choice}". It\'s a tie!\n') 
+            print(f'\nYou chose "{user_choice}" and your opponent chose "{computer_choice}". It\'s a tie!\n') 
         #computer wins
         elif (computer_choice == 'rock' and user_choice == 'scissors') or (computer_choice == 'paper' and user_choice == 'rock') \
             or (computer_choice == 'scissors' and user_choice == 'paper'):
-            print(f'You chose "{user_choice}" and your opponent chose "{computer_choice}". You lost.\n')
+            print(f'\nYou chose "{user_choice}" and your opponent chose "{computer_choice}". You lost.\n')
             self.computer_wins += 1
         #user wins
         else:
-            print(f'You chose "{user_choice}" and your opponent chose "{computer_choice}". You won!\n')
+            print(f'\nYou chose "{user_choice}" and your opponent chose "{computer_choice}". You won!\n')
             self.user_wins += 1
 
 
