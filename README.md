@@ -33,6 +33,6 @@ Distributed under the MIT License. See LICENSE.txt for more information.
 ###Repo link
 https://github.com/CJ1608/computer-vision-rock-paper-scissors.git 
 
-##Acknowledgements
+## Acknowledgements
 - https://choosealicense.com/
 - AiCore
