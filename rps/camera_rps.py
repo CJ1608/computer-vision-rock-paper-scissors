@@ -9,9 +9,6 @@ import numpy as np
 class RPS:
     """
     The class is used to represent a game of RPS between computer and user webcam that finishes once the user or computer has won 3 times. 
-
-    Returns:
-        _type_: _description_
     """
     
     #CONSTRUCTOR
