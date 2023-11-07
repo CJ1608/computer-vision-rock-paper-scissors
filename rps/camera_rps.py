@@ -127,6 +127,6 @@ class RPS:
             print(f'\nYou chose "{user_choice}" and your opponent chose "{computer_choice}". You won!\n')
             self.user_wins += 1
 
-
-game = RPS()
-game.play()
+if __name__ == '__main__':
+    game = RPS()
+    game.play()
