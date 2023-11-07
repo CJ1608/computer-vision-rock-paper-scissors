@@ -11,7 +11,6 @@ class RPS:
     The class is used to represent a game of RPS between computer and user webcam that finishes once the user or computer has won 3 times. 
     """
     
-    #CONSTRUCTOR
     def __init__(self):
         """
         See help(RPS) for more detail.
@@ -22,7 +21,6 @@ class RPS:
         self.user_wins = 0
         self.computer_wins = 0
     
-    #MAIN CLASS METHOD
     def play(self):   
         """
         This function is the main method that calls __countdown(), __get_computer_choice(),
@@ -33,20 +31,17 @@ class RPS:
         """
         self.user_wins = 0
         self.computer_wins = 0
-        #if neither user or computer won 3 times
         while(self.user_wins < 3) and (self.computer_wins < 3):
             print(f'\nComputer: {game.computer_wins}\tUser: {game.user_wins}')
             self.__countdown()
             user_choice = self.__get_prediction()
             self.__get_winner(computer_choice=self.__get_computer_choice(), user_choice = user_choice)
-        # if either of user or computer has won 3 times
-        print(f'\tEnd of game! \nComputer: {game.computer_wins} \tUser: {game.user_wins}')
+        print(f'\tEnd of game! \nComputer: {game.computer_wins} \tUser: {game.user_wins}\n')
         # After the loop release the cap object
         game.cap.release()
         # Destroy all the windows
         cv2.destroyAllWindows()
            
-    #COMPUTER CHOICE
     def __get_computer_choice(self):
         """
         This function randomly picks an option from a list of "Rock", "Paper", and "Scissors" and 
@@ -59,13 +54,11 @@ class RPS:
         computer_choice = random.choice(computer_options)
         return computer_choice
 
-    #COUNTDOWN TIMER
     def __countdown(self):
         """
         This function generates a countdown to tell the user to show their hand (showing rock, paper or
         scissors) on the count of 0. 
         """
-        #start time not updated automatically, only when called
         start_time = time.time()
         counter = 5
         print('Please show your hand on 0')
@@ -78,10 +71,9 @@ class RPS:
             counter -= 1
             #update time to new snapshot
             start_time = time.time()
-        #when counter hits 0, print message saying show hand and take input in as answer
+        #when counter hits 0 it takes input in as answer
         print('Show your choice now...')
 
-    #GET USER CHOICE FROM CAMERA USING MODEL
     def __get_prediction(self):
         """
         This function gets the user choice from the users camera and returns it to the __get_winner method. 
@@ -100,20 +92,19 @@ class RPS:
             ret, frame = self.cap.read()
             resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
             image_np = np.array(resized_frame)
-            normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
+            normalized_image = (image_np.astype(np.float32) / 127.0) - 1 
             self.data[0] = normalized_image
             prediction = self.model.predict(self.data)
             cv2.imshow('frame', frame)
             # Press q to close the window
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
-        #sorting out what option to print to user from model prediction
+        #labels from model prediction
         labels = {0: 'nothing', 1: 'rock', 2:'paper', 3:'scissors'}
         answer = np.argmax(prediction)
         user_choice = labels.get(answer) 
         return user_choice
      
-    #DECIDE WHO WINS EACH ROUND
     def __get_winner(self, computer_choice, user_choice):
         """
         Takes in user and computer choice options from __get_computer_choice and __get_prediction methods.
@@ -124,23 +115,18 @@ class RPS:
             computer_choice (str): computers choice of r/p/s from __get_computer_choice 
             user_choice (str): users choice of nothing/r/p/s from __get_prediction
         """
-        #user selects nothing
         if user_choice == 'nothing':
             print(f'\nYou chose {user_choice}. Please try again.\n')
-        #tie
         elif computer_choice == user_choice:
             print(f'\nYou chose "{user_choice}" and your opponent chose "{computer_choice}". It\'s a tie!\n') 
-        #computer wins
         elif (computer_choice == 'rock' and user_choice == 'scissors') or (computer_choice == 'paper' and user_choice == 'rock') \
             or (computer_choice == 'scissors' and user_choice == 'paper'):
             print(f'\nYou chose "{user_choice}" and your opponent chose "{computer_choice}". You lost.\n')
             self.computer_wins += 1
-        #user wins
         else:
             print(f'\nYou chose "{user_choice}" and your opponent chose "{computer_choice}". You won!\n')
             self.user_wins += 1
 
 
-#CALLS OBJ OF CLASS
 game = RPS()
 game.play()
