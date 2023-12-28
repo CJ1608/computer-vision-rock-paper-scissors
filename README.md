@@ -2,7 +2,7 @@
 
 
 ## Project description
-This is a project to create a game of rock, paper, scissors using a machine learning model. The user's choice is received from the camera on their device, it is run through the model and the prediction returned is compared to the computer's choice to see who has won that round of the game. The project was created following guidelines from AiCore. 
+This is a project to create a game of rock, paper, scissors using a machine learning model. The user's choice is received from the camera on their device. It is run through the model and the prediction returned is compared to the computer's choice to see who has won that round of the game. 
 
 I did some background reading about Artifical Intelligence and biases in Machine Learning models to understand more about how and why it is used and I have linked some of the resources in the 'Learning resources' section below. This complemented the practical experience of using and training a ML model and the introduction to Tensorflow and Keras. I also used my knowledge of OOP concepts and good coding principles in this project to try to make the code more readable, easier to maintain and hopefully prevent any accidental modification of the variables and methods in the code. 
 
