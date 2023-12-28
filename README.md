@@ -13,18 +13,17 @@ Made using Python 3.11.4 and VS Code 1.82.2
 - Check have all the needed modules and packages installed
 
 ## File structure of the project:
-- README.md
-- RPS-Template
-- requirements.txt  (list of all modules and packages needed for this project)
 - LICENSE.txt
-- rps:
-  - camera_rps.py (main code file)
+- README.md
+- main.py
+- requirements.txt  (list of all modules and packages needed for this project)
+- rps (all .py files used in making the project):
+  - camera_rps.py
   - keras_model.h5
   - labels.txt
   - manual_rps.py
   - milestone_2.py
 
-  
 ## License information
 Distributed under the MIT License. See LICENSE.txt for more information. 
 
