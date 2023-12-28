@@ -17,7 +17,7 @@ Made using Python 3.11.4 and VS Code 1.82.2
 - README.md
 - requirements.txt  (list of all modules and packages needed for this project)
 - rps (all .py files used in making the project):
-  - camera_rps.py (main code file)
+  - main.py
   - keras_model.h5
   - labels.txt
   - manual_rps.py
